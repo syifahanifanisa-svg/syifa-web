@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Syifa's Corner - Candy Sky</title>
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    
+    body {
+      background: linear-gradient(135deg, #bae6fd 0%, #fbcfe8 50%, #fef3c7 100%);
+      color: #334155;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container { max-width: 600px; margin: 0 auto; }
+
+    .hero-section { text-align: center; margin-bottom: 25px; }
+    .profile-pic { 
+      width: 130px; height: 130px; 
+      border-radius: 50%; 
+      border: 5px solid #ffffff; 
+      object-fit: cover;
+      box-shadow: 0 5px 15px rgba(2, 132, 199, 0.2);
+      margin-bottom: 10px;
+    }
+
+    nav {
+      display: flex; justify-content: center; gap: 10px;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(10px);
+      padding: 12px; border-radius: 30px;
+      margin-bottom: 30px;
+    }
+    nav button {
+      background: none; border: none; font-weight: 600; cursor: pointer;
+      color: #0369a1; padding: 5px 15px; border-radius: 20px; transition: 0.3s;
+    }
+    nav button.active { background: #0284c7; color: white; }
+
+    .card {
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 30px; padding: 25px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(255,255,255,0.5);
+    }
+
+    h2 { color: #0284c7; margin-bottom: 10px; }
+    p { line-height: 1.7; font-size: 0.95rem; }
+
+    .music-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .music-item img { width: 100%; border-radius: 20px; margin-bottom: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+    .music-item p { font-size: 0.8rem; font-weight: 600; color: #0369a1; }
+
+    .ig-box { text-align: center; border: 2px dashed #0284c7; padding: 15px; border-radius: 20px; }
+    .ig-btn { display: inline-block; background: #0284c7; color: white; padding: 8px 15px; border-radius: 15px; text-decoration: none; margin-top: 10px; }
+
+    .page-section { display: none; }
+    .page-section.active { display: block; animation: fadeIn 0.5s; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="hero-section">
+      <img src="FOTOKU.jpeg" alt="Foto Syifa" class="profile-pic">
+      <h1 style="font-size: 1.5rem; color: #0c4a6e;">Halo, Selamat Datang!</h1>
+    </div>
+
+    <nav>
+      <button class="active" onclick="showPage('beranda', this)">Beranda</button>
+      <button onclick="showPage('biodata', this)">Biodata</button>
+      <button onclick="showPage('musik', this)">Musik</button>
+    </nav>
+
+    <div id="beranda" class="page-section active">
+      <div class="card">
+        <h2>Tentang Website Ini 👋</h2>
+        <p>Selamat datang di website pribadiku! Website ini saya buat sebagai salah satu tugas untuk <strong>Mata Pelajaran Pilihan (MAPIL)</strong>. Senang sekali bisa berbagi karya digital sederhana ini kepadamu!</p>
+      </div>
+      <div class="card ig-box">
+        <h3>Connect with me! ✨</h3>
+        <a href="https://www.instagram.com/s.faee_?igsh=a2dpazdyODd6bWhx" target="_blank" class="ig-btn">@s.faee_</a>
+      </div>
+    </div>
+
+    <div id="biodata" class="page-section">
+      <div class="card">
+        <h2>📋 Tentang Saya</h2>
+        <p>Halo! Nama saya Syifa Hani Fanisa, biasa dipanggil Syifa. Saya lahir dan dibesarkan di Klambir Lima, Medan, pada 21 Juli 2010. Sejak kecil, saya memiliki ketertarikan yang besar pada dunia seni visual dan teknologi.</p>
+        <br>
+        <p>Saat ini, saya sedang menempuh pendidikan di SMKN 1 Cilegon dengan mengambil jurusan Rekayasa Perangkat Lunak (RPL). Melalui jurusan ini, saya bisa menyalurkan minat saya untuk mengeksplorasi dunia digital secara lebih mendalam.</p>
+        <br>
+        <p>Di luar aktivitas sekolah, saya suka menghabiskan waktu dengan mendengarkan musik. Selain itu, saya juga aktif mengasah kemampuan dengan belajar membuat website secara otodidak. Bagi saya, memadukan estetika seni visual ke dalam baris kode pemrograman adalah hal yang sangat menyenangkan.</p>
+      </div>
+    </div>
+
+    <div id="musik" class="page-section">
+      <div class="card">
+        <h2>🎵 Musik Favorit</h2>
+        <div class="music-grid">
+          <div class="music-item">
+            <img src="past life.jpg" alt="Ariana">
+            <p>Ariana Grande <br> "Past Life"</p>
+          </div>
+          <div class="music-item">
+            <img src="enchanted.jpg" alt="Taylor">
+            <p>Taylor Swift <br> "Enchanted"</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showPage(id, btn) {
+      document.querySelectorAll('.page-section').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      btn.classList.add('active');
+    }
+  </script>
+</body>
+</html>
